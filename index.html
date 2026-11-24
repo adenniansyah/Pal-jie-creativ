@@ -1,70 +1,288 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Paljie Media</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: Arial, sans-serif; background:#0f0f0f; color:#fff; }
-    header { text-align:center; padding:80px 20px; background:linear-gradient(135deg,#1db954,#0b3d1e); }
-    header h1 { font-size:2.5rem; }
-    header p { margin-top:10px; opacity:.9; }
-    nav { display:flex; justify-content:center; gap:20px; padding:15px; background:#1a1a1a; }
-    nav a { color:#fff; text-decoration:none; }
-    nav a:hover { color:#1db954; }
-    section { max-width:1000px; margin:40px auto; padding:0 20px; }
-    h2 { margin-bottom:20px; color:#1db954; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-    .card { background:#1a1a1a; padding:20px; border-radius:10px; }
-    .card h3 { margin-bottom:8px; }
-    footer { text-align:center; padding:30px; background:#1a1a1a; margin-top:40px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paljie Media — Vlog, Podcast & News</title>
+<meta name="description" content="Paljie Media: vlog harian, podcast obrolan santai, dan berita yang dirangkum dengan jelas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16132e; --paper:#f4f2fb; --white:#fff;
+  --violet:#5a3df0; --sun:#ffd23f; --coral:#ff6b57;
+  --muted:#5d5a78; --line:rgba(22,19,46,.14);
+  --r:28px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;line-height:1.02;letter-spacing:-.03em}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:20;background:rgba(244,242,251,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.35rem;letter-spacing:-.04em;display:flex;align-items:center;gap:10px}
+.logo i{width:26px;height:26px;border-radius:50%;background:conic-gradient(var(--violet) 0 33%,var(--sun) 0 66%,var(--coral) 0);display:block}
+.nav ul{display:flex;gap:6px;list-style:none}
+.nav ul a{padding:8px 16px;border-radius:99px;font-weight:500;font-size:.95rem;transition:background .2s}
+.nav ul a:hover{background:rgba(90,61,240,.1)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:99px;font-weight:700;font-size:1rem;background:var(--ink);color:var(--white);border:2px solid var(--ink);transition:transform .2s,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px);background:var(--violet);border-color:var(--violet)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.nav .btn{padding:10px 20px;font-size:.92rem}
+
+/* HERO */
+.hero{padding:72px 0 40px}
+.hero h1{font-size:clamp(3rem,9vw,7.4rem);font-weight:800;max-width:11ch}
+.hero h1 span{display:inline-block;padding:0 .18em;border-radius:.25em;background:var(--sun);transform:rotate(-2deg)}
+.hero-row{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-end;justify-content:space-between;margin-top:36px}
+.hero p{max-width:460px;font-size:1.2rem;color:var(--muted)}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* CHANNEL TILES */
+.tiles{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:18px;margin-top:56px}
+.tile{position:relative;min-height:340px;border-radius:var(--r);padding:30px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.tile:hover{transform:translateY(-6px)}
+.tile h2{font-size:2.6rem}
+.tile p{max-width:28ch;font-weight:500}
+.tile .tag{align-self:flex-start;background:rgba(255,255,255,.35);padding:6px 14px;border-radius:99px;font-size:.85rem;font-weight:700}
+.tile .big{position:absolute;right:-18px;bottom:-40px;font-family:'Bricolage Grotesque';font-weight:800;font-size:10rem;line-height:1;opacity:.14}
+.t-vlog{background:var(--violet);color:#fff}
+.t-pod{background:var(--sun)}
+.t-news{background:var(--coral)}
+
+/* SECTIONS */
+section{padding:96px 0 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+.sec-head p{color:var(--muted);max-width:380px}
+.more{font-weight:700;border-bottom:2px solid var(--ink)}
+.more:hover{color:var(--violet);border-color:var(--violet)}
+
+/* VIDEO CARDS */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.video{display:block}
+.thumb{position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;margin-bottom:16px}
+.thumb::after{content:"";position:absolute;left:50%;top:50%;width:62px;height:62px;border-radius:50%;background:#fff;transform:translate(-50%,-50%) scale(.9);box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .25s}
+.thumb::before{content:"";position:absolute;left:50%;top:50%;z-index:1;transform:translate(-30%,-50%);border-left:18px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent}
+.video:hover .thumb::after{transform:translate(-50%,-50%) scale(1.08)}
+.g1{background:linear-gradient(135deg,#5a3df0,#b49cff)}
+.g2{background:linear-gradient(135deg,#ff6b57,#ffd23f)}
+.g3{background:linear-gradient(135deg,#16132e,#5a3df0)}
+.video h3{font-size:1.4rem;letter-spacing:-.02em;line-height:1.15}
+.meta{color:var(--muted);font-size:.92rem;margin-top:6px}
+
+/* PODCAST */
+.pod{background:var(--ink);color:#fff;border-radius:40px;padding:56px;margin-top:96px;display:grid;grid-template-columns:1fr 1.2fr;gap:48px}
+.pod h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+.pod .lead{color:#c9c5e6;margin:18px 0 28px;max-width:38ch}
+.pod .btn{background:var(--sun);color:var(--ink);border-color:var(--sun)}
+.pod .btn:hover{background:#fff;border-color:#fff;color:var(--ink)}
+.eps{list-style:none;display:flex;flex-direction:column}
+.ep{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:20px 0;border-top:1px solid rgba(255,255,255,.16)}
+.ep:last-child{border-bottom:1px solid rgba(255,255,255,.16)}
+.play{width:46px;height:46px;border-radius:50%;background:var(--violet);display:grid;place-items:center;transition:background .2s}
+.play::before{content:"";border-left:12px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+.ep:hover .play{background:var(--coral)}
+.ep h3{font-size:1.2rem;letter-spacing:-.01em}
+.ep small{color:#a9a4cf}
+.dur{color:#a9a4cf;font-size:.9rem}
+
+/* NEWS */
+.news{display:grid;grid-template-columns:1.2fr 1fr;gap:22px}
+.lead-news{background:var(--white);border-radius:var(--r);padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;border:1px solid var(--line)}
+.lead-news h3{font-size:2.2rem;margin:14px 0}
+.chip{align-self:flex-start;background:var(--coral);color:#fff;padding:5px 14px;border-radius:99px;font-size:.82rem;font-weight:700}
+.list{display:flex;flex-direction:column;gap:14px}
+.item{background:var(--white);border-radius:22px;padding:22px 26px;border:1px solid var(--line);transition:border-color .2s,transform .2s}
+.item:hover{border-color:var(--violet);transform:translateX(4px)}
+.item h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
+
+/* ABOUT / CONTACT */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about h2{font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:20px}
+.about p{color:var(--muted);font-size:1.1rem;max-width:46ch}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:28px}
+.stat b{display:block;font-family:'Bricolage Grotesque';font-size:2.8rem;letter-spacing:-.04em;line-height:1}
+.stat span{color:var(--muted)}
+.contact{margin-top:96px;background:var(--violet);color:#fff;border-radius:40px;padding:64px 40px;text-align:center}
+.contact h2{font-size:clamp(2.4rem,6vw,4.6rem);max-width:14ch;margin:0 auto 18px}
+.contact p{color:#e3dcff;margin-bottom:30px}
+.socials{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.socials a{padding:12px 24px;border-radius:99px;background:rgba(255,255,255,.14);font-weight:700;transition:background .2s,color .2s}
+.socials a:hover{background:#fff;color:var(--violet)}
+footer{padding:40px 0 48px;color:var(--muted);font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* Satu momen masuk di hero */
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero h1,.hero-row{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.hero-row{animation-delay:.15s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+@media (max-width:900px){
+  .tiles,.grid3,.news,.about,.pod{grid-template-columns:1fr}
+  .tile{min-height:240px}
+  .pod{padding:32px 24px;border-radius:30px}
+  .nav ul{display:none}
+  .contact{padding:48px 24px}
+}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Paljie Media</h1>
-  <p>Konten kreator untuk vlog, podcast, dan news</p>
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="logo"><i></i>Paljie Media</a>
+    <nav aria-label="Menu utama">
+      <ul>
+        <li><a href="#vlog">Vlog</a></li>
+        <li><a href="#podcast">Podcast</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+      </ul>
+    </nav>
+    <a href="#kontak" class="btn">Hubungi kami</a>
+  </div>
 </header>
 
-<nav>
-  <a href="#vlog">Vlog</a>
-  <a href="#podcast">Podcast</a>
-  <a href="#news">News</a>
-  <a href="#kontak">Kontak</a>
-</nav>
+<main>
+<div class="wrap">
 
-<section id="vlog">
-  <h2>Vlog</h2>
-  <div class="grid">
-    <div class="card"><h3>Vlog 1</h3><p>Deskripsi vlog pertama.</p></div>
-    <div class="card"><h3>Vlog 2</h3><p>Deskripsi vlog kedua.</p></div>
+  <div class="hero">
+    <h1>Cerita, obrolan, <span>kabar.</span></h1>
+    <div class="hero-row">
+      <p>Paljie Media membuat vlog harian, podcast santai, dan berita yang dirangkum dengan jelas, untuk kamu yang suka konten yang jujur.</p>
+      <div class="cta">
+        <a href="#vlog" class="btn">Tonton vlog terbaru</a>
+        <a href="#podcast" class="btn ghost">Dengarkan podcast</a>
+      </div>
+    </div>
+
+    <div class="tiles">
+      <a href="#vlog" class="tile t-vlog">
+        <span class="tag">Video</span>
+        <div><h2>Vlog</h2><p>Keseharian, perjalanan, dan hal-hal kecil yang menarik.</p></div>
+        <span class="big" aria-hidden="true">V</span>
+      </a>
+      <a href="#podcast" class="tile t-pod">
+        <span class="tag">Audio</span>
+        <div><h2>Podcast</h2><p>Ngobrol bareng tamu seru tiap minggu.</p></div>
+        <span class="big" aria-hidden="true">P</span>
+      </a>
+      <a href="#news" class="tile t-news">
+        <span class="tag">Tulisan</span>
+        <div><h2>News</h2><p>Berita penting, ditulis singkat.</p></div>
+        <span class="big" aria-hidden="true">N</span>
+      </a>
+    </div>
   </div>
-</section>
 
-<section id="podcast">
-  <h2>Podcast</h2>
-  <div class="grid">
-    <div class="card"><h3>Episode 1</h3><p>Deskripsi podcast.</p></div>
+  <section id="vlog">
+    <div class="sec-head">
+      <h2>Vlog terbaru</h2>
+      <a class="more" href="https://youtube.com" target="_blank" rel="noopener">Semua video di YouTube</a>
+    </div>
+    <div class="grid3">
+      <a class="video" href="#" aria-label="Putar Vlog 1">
+        <div class="thumb g1"></div>
+        <h3>Judul vlog pertama kamu</h3>
+        <p class="meta">12 menit • 2 hari lalu</p>
+      </a>
+      <a class="video" href="#" aria-label="Putar Vlog 2">
+        <div class="thumb g2"></div>
+        <h3>Judul vlog kedua kamu</h3>
+        <p class="meta">8 menit • 1 minggu lalu</p>
+      </a>
+      <a class="video" href="#" aria-label="Putar Vlog 3">
+        <div class="thumb g3"></div>
+        <h3>Judul vlog ketiga kamu</h3>
+        <p class="meta">15 menit • 2 minggu lalu</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="podcast" style="padding-top:0">
+    <div class="pod">
+      <div>
+        <h2>Podcast Paljie</h2>
+        <p class="lead">Obrolan santai tentang kreativitas, teknologi, dan cerita orang-orang di sekitar kita. Tayang setiap minggu.</p>
+        <a class="btn" href="https://open.spotify.com" target="_blank" rel="noopener">Dengarkan di Spotify</a>
+      </div>
+      <ul class="eps">
+        <li class="ep"><span class="play"></span><div><h3>Episode 3: Judul episode terbaru</h3><small>Bersama tamu spesial</small></div><span class="dur">42 mnt</span></li>
+        <li class="ep"><span class="play"></span><div><h3>Episode 2: Judul episode kedua</h3><small>Obrolan santai</small></div><span class="dur">36 mnt</span></li>
+        <li class="ep"><span class="play"></span><div><h3>Episode 1: Perkenalan</h3><small>Mulai dari sini</small></div><span class="dur">28 mnt</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="sec-head">
+      <h2>Kabar terbaru</h2>
+      <p>Ringkasan berita yang penting, tanpa bertele-tele.</p>
+    </div>
+    <div class="news">
+      <article class="lead-news">
+        <div>
+          <span class="chip">Utama</span>
+          <h3>Judul berita utama ditulis di sini</h3>
+          <p class="meta">Ringkasan dua kalimat tentang isi berita ini supaya pembaca langsung paham.</p>
+        </div>
+        <a class="more" href="#" style="align-self:flex-start">Baca selengkapnya</a>
+      </article>
+      <div class="list">
+        <a class="item" href="#"><h3>Judul berita kedua</h3><p class="meta">Hari ini</p></a>
+        <a class="item" href="#"><h3>Judul berita ketiga</h3><p class="meta">Kemarin</p></a>
+        <a class="item" href="#"><h3>Judul berita keempat</h3><p class="meta">2 hari lalu</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tentang">
+    <div class="about">
+      <div>
+        <h2>Dibuat oleh kreator, untuk penonton.</h2>
+        <p>Paljie Media berawal dari kamera sederhana dan rasa penasaran. Sekarang kami membagikan cerita lewat video, suara, dan tulisan. Ganti teks ini dengan kisah kamu sendiri.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>10K+</b><span>Penonton</span></div>
+        <div class="stat"><b>50+</b><span>Video</span></div>
+        <div class="stat"><b>20+</b><span>Episode</span></div>
+        <div class="stat"><b>3</b><span>Kanal konten</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak" style="padding-top:0">
+    <div class="contact">
+      <h2>Ayo kolaborasi bareng.</h2>
+      <p>Punya ide, tawaran kerja sama, atau sekadar ingin menyapa? Hubungi kami.</p>
+      <div class="socials">
+        <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+        <a href="mailto:halo@email.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Paljie Media</span>
+    <span>Dibuat dengan GitHub Pages</span>
   </div>
-</section>
-
-<section id="news">
-  <h2>News</h2>
-  <div class="grid">
-    <div class="card"><h3>Berita Terbaru</h3><p>Isi ringkasan berita.</p></div>
-  </div>
-</section>
-
-<section id="kontak">
-  <h2>Kontak</h2>
-  <p>Instagram / YouTube / Email kamu di sini.</p>
-</section>
-
-<footer>© 2026 Paljie Media</footer>
+</footer>
 
 </body>
 </html>
-
-
