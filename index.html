@@ -93,6 +93,11 @@ li:last-child>.ep{border-bottom:1px solid rgba(255,255,255,.16)}
 .play{width:46px;height:46px;border-radius:50%;background:var(--violet);display:grid;place-items:center;transition:background .2s}
 .play::before{content:"";border-left:12px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
 .ep:hover .play{background:var(--coral)}
+.yt{position:relative;width:132px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--violet);display:block}
+.yt img{width:100%;height:100%;object-fit:cover;display:block}
+.yt::after{content:"";position:absolute;left:50%;top:50%;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.94);transform:translate(-50%,-50%);transition:background .2s}
+.yt::before{content:"";position:absolute;left:50%;top:50%;z-index:1;transform:translate(-35%,-50%);border-left:10px solid var(--ink);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.ep:hover .yt::after{background:var(--sun)}
 .ep h3{font-size:1.2rem;letter-spacing:-.01em}
 .ep small{color:#a9a4cf}
 .dur{color:#a9a4cf;font-size:.9rem}
@@ -135,6 +140,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   .tile{min-height:240px}
   .pod{padding:32px 24px;border-radius:30px}
   .nav ul{display:none}
+  .yt{width:96px}
+  .dur{display:none}
+  .ep{grid-template-columns:auto 1fr}
   .contact{padding:48px 24px}
 }
 </style>
@@ -165,7 +173,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <p>Pal jie creativ membuat vlog harian, podcast santai, dan berita yang dirangkum dengan jelas, untuk kamu yang suka konten yang jujur.</p>
       <div class="cta">
         <a href="#vlog" class="btn">Tonton vlog terbaru</a>
-        <a href="#podcast" class="btn ghost">Dengarkan dan tonton podcast</a>
+        <a href="#podcast" class="btn ghost">Dengarkan podcast</a>
       </div>
     </div>
 
@@ -176,7 +184,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <span class="big" aria-hidden="true">V</span>
       </a>
       <a href="#podcast" class="tile t-pod">
-        <span class="tag">Vidio</span>
+        <span class="tag">Audio</span>
         <div><h2>Podcast</h2><p>Ngobrol bareng tamu seru tiap minggu.</p></div>
         <span class="big" aria-hidden="true">P</span>
       </a>
@@ -220,9 +228,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <a class="btn" href="https://youtube.com/@paljie" target="_blank" rel="noopener">Tonton podcast di YouTube</a>
       </div>
       <ul class="eps">
-        <li><a class="ep" href="https://youtube.com/@paljie" target="_blank" rel="noopener"><span class="play"></span><div><h3>Episode 3: Judul episode terbaru</h3><small>Bersama tamu spesial</small></div><span class="dur">42 mnt</span></a></li>
-        <li><a class="ep" href="https://youtube.com/@paljie" target="_blank" rel="noopener"><span class="play"></span><div><h3>Episode 2: Judul episode kedua</h3><small>Obrolan santai</small></div><span class="dur">36 mnt</span></a></li>
-        <li><a class="ep" href="https://youtube.com/@paljie" target="_blank" rel="noopener"><span class="play"></span><div><h3>Episode 1: Perkenalan</h3><small>Mulai dari sini</small></div><span class="dur">28 mnt</span></a></li>
+        <li><a class="ep" href="https://youtu.be/_hwZB3TNP-8" target="_blank" rel="noopener"><span class="play"></span><div><h3>Cinta Beda Agama: Bertahan Karena Cinta atau Menyerah Karena Iman?</h3><small>Tonton di YouTube</small></div><span class="dur">▶ YouTube</span></a></li>
+        <li><a class="ep" href="https://youtu.be/sVOkx4UhgV4" target="_blank" rel="noopener"><span class="play"></span><div><h3>🔥 Ngakak Sekaligus Belajar! Lalu Lintas Tarakan Bareng Mata Menyala Polisi Kreatif</h3><small>Tonton di YouTube</small></div><span class="dur">▶ YouTube</span></a></li>
+        <li><a class="ep" href="https://youtu.be/ggrneuRkPmk" target="_blank" rel="noopener"><span class="play"></span><div><h3>🎙️ Podcast Bareng Owner Kopi Bekawan Tarakan || Cerita Perjalanan, Bisnis, dan Filosofi Kopi Lokal</h3><small>Tonton di YouTube</small></div><span class="dur">▶ YouTube</span></a></li>
       </ul>
     </div>
   </section>
