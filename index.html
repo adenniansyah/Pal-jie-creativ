@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Pal Jie Creativ — Studio Kreatif Virtual</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
   font-family:var(--sans);
   background:var(--bg);
@@ -38,6 +38,7 @@ body{
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  max-width:100vw;
 }
 
 ::selection{background:var(--gold);color:var(--bg)}
@@ -58,18 +59,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   transition:opacity .8s var(--ease),visibility .8s;
 }
 .loader.hidden{opacity:0;visibility:hidden}
-.loader-inner{
-  display:flex;flex-direction:column;align-items:center;gap:24px;
-}
+.loader-inner{display:flex;flex-direction:column;align-items:center;gap:24px}
 .loader-logo{
   font-family:var(--serif);font-size:2rem;font-weight:700;
   letter-spacing:.05em;color:var(--text);
 }
 .loader-logo span{color:var(--gold)}
-.loader-bar{
-  width:200px;height:1px;background:var(--line-2);
-  position:relative;overflow:hidden;
-}
+.loader-bar{width:200px;height:1px;background:var(--line-2);position:relative;overflow:hidden}
 .loader-bar::after{
   content:'';position:absolute;left:0;top:0;
   width:40%;height:100%;background:var(--gold);
@@ -126,8 +122,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   transition:all .4s var(--ease);
 }
 .nav-cta:hover{background:var(--gold);color:var(--bg)}
-.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101}
 .nav-toggle span{width:24px;height:1px;background:var(--text);transition:.3s}
+
+/* Mobile Menu Overlay */
+.nav-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.6);
+  opacity:0;visibility:hidden;transition:all .4s var(--ease);
+  z-index:98;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+}
+.nav-overlay.active{opacity:1;visibility:visible}
 
 /* ============ HERO ============ */
 .hero{
@@ -162,12 +166,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .hero-tag{
   display:inline-flex;align-items:center;gap:12px;
   font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:32px;
-  font-weight:500;
+  color:var(--gold);margin-bottom:32px;font-weight:500;
 }
-.hero-tag::before{
-  content:'';width:40px;height:1px;background:var(--gold);
-}
+.hero-tag::before{content:'';width:40px;height:1px;background:var(--gold)}
 .hero-title{
   font-family:var(--serif);font-weight:500;
   font-size:clamp(3rem,7vw,6.5rem);
@@ -230,10 +231,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .hero-right{
   position:relative;height:600px;
   animation:fadeIn 1.5s var(--ease) .4s both;
+  overflow:hidden;
 }
 .building-scene{
   position:relative;width:100%;height:100%;
   perspective:1500px;
+  overflow:visible;
 }
 .building{
   position:absolute;left:50%;top:50%;
@@ -282,30 +285,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .floor:hover::before{background:rgba(212,175,55,.4);height:12px}
 .floor.active{background:rgba(212,175,55,.2)}
 .floor.active::before{background:var(--gold);height:12px}
-.floor:nth-child(1){top:0}
-.floor:nth-child(2){top:20px}
-.floor:nth-child(3){top:40px}
-.floor:nth-child(4){top:60px}
-.floor:nth-child(5){top:80px}
-.floor:nth-child(6){top:100px}
-.floor:nth-child(7){top:120px}
-.floor:nth-child(8){top:140px}
-.floor:nth-child(9){top:160px}
-.floor:nth-child(10){top:180px}
-.floor:nth-child(11){top:200px}
-.floor:nth-child(12){top:220px}
-.floor:nth-child(13){top:240px}
-.floor:nth-child(14){top:260px}
-.floor:nth-child(15){top:280px}
-.floor:nth-child(16){top:300px}
-.floor:nth-child(17){top:320px}
-.floor:nth-child(18){top:340px}
-.floor:nth-child(19){top:360px}
-.floor:nth-child(20){top:380px}
-.floor:nth-child(21){top:400px}
-.floor:nth-child(22){top:420px}
-.floor:nth-child(23){top:440px}
-.floor:nth-child(24){top:460px}
+.floor:nth-child(1){top:0}.floor:nth-child(2){top:20px}.floor:nth-child(3){top:40px}
+.floor:nth-child(4){top:60px}.floor:nth-child(5){top:80px}.floor:nth-child(6){top:100px}
+.floor:nth-child(7){top:120px}.floor:nth-child(8){top:140px}.floor:nth-child(9){top:160px}
+.floor:nth-child(10){top:180px}.floor:nth-child(11){top:200px}.floor:nth-child(12){top:220px}
+.floor:nth-child(13){top:240px}.floor:nth-child(14){top:260px}.floor:nth-child(15){top:280px}
+.floor:nth-child(16){top:300px}.floor:nth-child(17){top:320px}.floor:nth-child(18){top:340px}
+.floor:nth-child(19){top:360px}.floor:nth-child(20){top:380px}.floor:nth-child(21){top:400px}
+.floor:nth-child(22){top:420px}.floor:nth-child(23){top:440px}.floor:nth-child(24){top:460px}
 
 .building-glow{
   position:absolute;left:50%;top:50%;
@@ -317,7 +304,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 
 /* ============ SECTIONS ============ */
-section{padding:120px 48px;position:relative}
+section{padding:120px 48px;position:relative;overflow-x:hidden}
 .section-header{
   max-width:1400px;margin:0 auto 80px;
   display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;
@@ -327,9 +314,7 @@ section{padding:120px 48px;position:relative}
   color:var(--gold);margin-bottom:20px;font-weight:500;
   display:flex;align-items:center;gap:12px;
 }
-.section-tag::before{
-  content:'';width:30px;height:1px;background:var(--gold);
-}
+.section-tag::before{content:'';width:30px;height:1px;background:var(--gold)}
 .section-title{
   font-family:var(--serif);font-weight:500;
   font-size:clamp(2.5rem,5vw,4.5rem);
@@ -482,10 +467,7 @@ section{padding:120px 48px;position:relative}
   background:linear-gradient(135deg,rgba(212,175,55,.1) 0%,transparent 60%);
   opacity:0;transition:opacity .5s var(--ease);
 }
-.room-card:hover{
-  border-color:var(--gold);
-  transform:translateY(-4px);
-}
+.room-card:hover{border-color:var(--gold);transform:translateY(-4px)}
 .room-card:hover::before{opacity:1}
 .room-card.active{
   border-color:var(--gold);
@@ -503,18 +485,14 @@ section{padding:120px 48px;position:relative}
   font-family:var(--serif);font-size:1.1rem;font-weight:600;
   margin-bottom:8px;line-height:1.3;
 }
-.room-card-desc{
-  font-size:.8rem;color:var(--text-dim);line-height:1.5;
-}
+.room-card-desc{font-size:.8rem;color:var(--text-dim);line-height:1.5}
 .room-card-arrow{
   position:absolute;top:24px;right:24px;
   width:24px;height:24px;
   opacity:0;transform:translate(-10px,10px);
   transition:all .4s var(--ease);
 }
-.room-card:hover .room-card-arrow{
-  opacity:1;transform:translate(0);
-}
+.room-card:hover .room-card-arrow{opacity:1;transform:translate(0)}
 .room-card-arrow svg{width:20px;height:20px;stroke:var(--gold)}
 
 /* ============ VLOG ============ */
@@ -631,8 +609,7 @@ section{padding:120px 48px;position:relative}
 .episode:hover .ep-title{color:var(--gold)}
 .ep-number{
   font-family:var(--display);font-size:1.5rem;
-  color:var(--gold);opacity:.5;
-  font-weight:500;
+  color:var(--gold);opacity:.5;font-weight:500;
 }
 .ep-title{
   font-family:var(--serif);font-size:1.15rem;font-weight:500;
@@ -662,10 +639,7 @@ section{padding:120px 48px;position:relative}
   transform:scaleX(0);transform-origin:left;
   transition:transform .5s var(--ease);
 }
-.news-card:hover{
-  border-color:var(--gold);
-  transform:translateY(-4px);
-}
+.news-card:hover{border-color:var(--gold);transform:translateY(-4px)}
 .news-card:hover::before{transform:scaleX(1)}
 .news-tag{
   display:inline-block;
@@ -789,14 +763,14 @@ section{padding:120px 48px;position:relative}
   flex-wrap:wrap;gap:24px;
 }
 .footer-copy{font-size:.85rem;color:var(--text-mute)}
-.footer-links{display:flex;gap:24px}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
 .footer-links a{
   font-size:.85rem;color:var(--text-dim);
   transition:color .3s;
 }
 .footer-links a:hover{color:var(--gold)}
 
-/* ============ RESPONSIVE ============ */
+/* ============ RESPONSIVE — TABLET ============ */
 @media(max-width:1024px){
   .hero-content,.section-header,.podcast-grid,.about-grid{
     grid-template-columns:1fr;gap:60px;
@@ -804,23 +778,185 @@ section{padding:120px 48px;position:relative}
   .hero-right{height:400px;order:-1}
   .room-selector{grid-template-columns:repeat(2,1fr)}
   .vlog-grid,.news-grid{grid-template-columns:1fr 1fr}
+  .nav{padding:20px 32px}
+  section{padding:100px 32px}
 }
+
+/* ============ RESPONSIVE — MOBILE ============ */
 @media(max-width:768px){
-  .nav{padding:20px 24px}
-  .nav.scrolled{padding:14px 24px}
-  .nav-links{display:none}
-  .nav-toggle{display:flex}
-  section{padding:80px 24px}
-  .hero{padding:100px 24px 60px}
-  .studio{padding:100px 24px}
-  .contact{padding:100px 24px}
-  .room-selector{grid-template-columns:1fr}
-  .vlog-grid,.news-grid{grid-template-columns:1fr}
-  .room-info{bottom:20px;left:20px;right:20px;flex-direction:column;align-items:flex-start;gap:16px}
-  .room-name{font-size:1.8rem}
-  .room-controls{position:absolute;bottom:20px;right:20px}
-  .about-stats{grid-template-columns:1fr}
-  .footer{padding:32px 24px;flex-direction:column;text-align:center}
+  /* NAV */
+  .nav{padding:16px 20px}
+  .nav.scrolled{padding:12px 20px}
+  .nav-logo{font-size:1.1rem;gap:8px}
+  .nav-logo-mark{width:28px;height:28px;font-size:.8rem}
+  
+  /* Sembunyikan CTA nav di mobile */
+  .nav-cta{display:none}
+  
+  /* Aktifkan toggle */
+  .nav-toggle{display:flex;gap:6px}
+  .nav-toggle span{width:22px;transition:.3s}
+  .nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .nav-toggle.active span:nth-child(2){opacity:0}
+  .nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  
+  /* Menu drawer mobile */
+  .nav-links{
+    position:fixed;
+    top:0;right:-100%;
+    width:75%;max-width:300px;height:100vh;
+    background:var(--bg-2);
+    flex-direction:column;gap:0;
+    padding:80px 28px 32px;
+    transition:right .4s var(--ease);
+    z-index:99;
+    border-left:1px solid var(--line-2);
+    box-shadow:-10px 0 40px rgba(0,0,0,.5);
+    overflow-y:auto;
+  }
+  .nav-links.active{right:0}
+  .nav-links li{width:100%;border-bottom:1px solid var(--line-2)}
+  .nav-links li:last-child{border-bottom:none}
+  .nav-links a{
+    display:block;padding:20px 0;
+    font-size:1rem;letter-spacing:.05em;
+  }
+  .nav-links a::after{display:none}
+  
+  /* HERO */
+  .hero{padding:100px 20px 60px;min-height:auto}
+  .hero-content{gap:40px}
+  .hero-tag{font-size:.7rem;margin-bottom:20px;letter-spacing:.15em}
+  .hero-tag::before{width:24px}
+  .hero-title{
+    font-size:clamp(2.2rem,11vw,3.5rem);
+    margin-bottom:24px;
+  }
+  .hero-desc{
+    font-size:.95rem;margin-bottom:32px;
+    max-width:100%;
+  }
+  .hero-cta{flex-direction:column;gap:12px;width:100%}
+  .btn-primary,.btn-ghost{
+    width:100%;justify-content:center;
+    padding:16px 24px;font-size:.8rem;
+  }
+  
+  /* Building 3D — diperkecil agar pas di layar HP */
+  .hero-right{height:320px;margin-top:20px}
+  .building{width:180px;height:320px}
+  .building-side{width:80px;right:-40px}
+  .building-top{height:80px;top:-40px}
+  .building-glow{width:300px;height:400px}
+  .building-front{transform:translateZ(40px)}
+  .floor{height:13.33px}
+  .floor::before{height:6px}
+  
+  /* SECTIONS */
+  section{padding:80px 20px;overflow-x:hidden}
+  .section-header{
+    margin:0 auto 40px;
+    grid-template-columns:1fr;gap:24px;
+    align-items:start;
+  }
+  .section-tag{font-size:.7rem;margin-bottom:12px}
+  .section-title{font-size:clamp(2rem,9vw,3rem);margin-bottom:0}
+  .section-desc{font-size:.95rem;max-width:100%}
+  
+  /* STUDIO */
+  .studio{padding:80px 20px}
+  .studio-viewer{aspect-ratio:4/3;margin-bottom:24px}
+  .furniture-icon{width:80px;height:80px}
+  .furniture-icon svg{width:32px;height:32px}
+  
+  /* Room info mobile — layout diperbaiki agar tidak bertabrakan */
+  .room-info{
+    position:relative;
+    bottom:auto;left:auto;right:auto;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+    padding:20px;
+    background:linear-gradient(180deg,transparent 0%,rgba(10,10,10,.9) 30%);
+  }
+  .room-name{font-size:1.5rem;margin-bottom:6px}
+  .room-desc{font-size:.85rem;max-width:100%}
+  .room-controls{
+    position:relative;
+    bottom:auto;right:auto;
+    justify-content:flex-start;
+  }
+  .room-btn{width:44px;height:44px}
+  
+  /* Room Selector */
+  .room-selector{grid-template-columns:1fr;gap:12px}
+  .room-card{padding:24px 20px}
+  .room-card-number{font-size:2rem;margin-bottom:12px}
+  .room-card-title{font-size:1rem;margin-bottom:6px}
+  .room-card-desc{font-size:.75rem}
+  .room-card-arrow{top:16px;right:16px;opacity:1;transform:none}
+  
+  /* VLOG */
+  .vlog-grid{grid-template-columns:1fr;gap:16px;max-width:400px}
+  .vlog-card{aspect-ratio:9/14}
+  .vlog-title{font-size:1.1rem}
+  
+  /* PODCAST */
+  .podcast-grid{gap:40px}
+  .podcast-visual{aspect-ratio:16/10;max-width:400px;margin:0 auto}
+  .podcast-mic{width:120px;height:120px}
+  .podcast-ring{inset:-30px}
+  .podcast-ring:nth-child(2){inset:-60px}
+  .podcast-ring:nth-child(3){inset:-90px}
+  .episode{padding:20px 0;gap:16px;grid-template-columns:auto 1fr}
+  .ep-number{font-size:1.2rem}
+  .ep-title{font-size:1rem}
+  .ep-duration{grid-column:2;font-size:.75rem;margin-top:-4px}
+  
+  /* NEWS */
+  .news-grid{grid-template-columns:1fr;gap:16px}
+  .news-card{padding:28px 24px}
+  .news-title{font-size:1.2rem}
+  .news-stat-num{font-size:1.5rem}
+  
+  /* ABOUT */
+  .about-grid{gap:40px}
+  .about-title{font-size:clamp(2rem,8vw,2.8rem);margin-bottom:24px}
+  .about-text{font-size:.95rem;margin-bottom:32px}
+  .about-stats{grid-template-columns:1fr 1fr}
+  .about-stat{padding:24px 16px}
+  .about-stat-num{font-size:2rem}
+  .about-stat-label{font-size:.7rem}
+  
+  /* CONTACT */
+  .contact{padding:80px 20px}
+  .contact-tag{margin-bottom:16px;font-size:.7rem}
+  .contact-title{font-size:clamp(2.2rem,9vw,3.5rem);margin-bottom:20px}
+  .contact-desc{font-size:.95rem;margin-bottom:32px;max-width:100%}
+  .contact-socials{flex-direction:column;gap:10px}
+  .social-link{width:100%;justify-content:center;padding:14px 24px}
+  
+  /* FOOTER */
+  .footer{
+    padding:32px 20px;
+    flex-direction:column;
+    text-align:center;
+    gap:16px;
+  }
+  .footer-links{justify-content:center;gap:16px}
+  .footer-copy,.footer-links a{font-size:.8rem}
+}
+
+/* Small phones (iPhone SE, etc.) */
+@media(max-width:380px){
+  .hero-title{font-size:2rem}
+  .building{width:150px;height:280px}
+  .floor{height:11.6px}
+  .hero-right{height:280px}
+  .room-name{font-size:1.3rem}
+  .contact-title{font-size:2rem}
+  .about-stat{padding:20px 12px}
+  .about-stat-num{font-size:1.7rem}
 }
 </style>
 </head>
@@ -840,7 +976,7 @@ section{padding:120px 48px;position:relative}
     <span class="nav-logo-mark">P</span>
     Pal Jie Creativ
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#studio">Studio</a></li>
     <li><a href="#vlog">Vlog</a></li>
     <li><a href="#podcast">Podcast</a></li>
@@ -850,6 +986,7 @@ section{padding:120px 48px;position:relative}
   <a href="#kontak" class="nav-cta">Hubungi Kami</a>
   <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <!-- Hero -->
 <section class="hero">
@@ -1161,6 +1298,26 @@ window.addEventListener('scroll',()=>{
   nav.classList.toggle('scrolled',window.scrollY>50);
 });
 
+// ===== MOBILE NAV TOGGLE (FUNGSI BARU) =====
+const navToggle=document.getElementById('navToggle');
+const navLinks=document.getElementById('navLinks');
+const navOverlay=document.getElementById('navOverlay');
+
+function toggleMenu(){
+  navToggle.classList.toggle('active');
+  navLinks.classList.toggle('active');
+  navOverlay.classList.toggle('active');
+  document.body.style.overflow=navLinks.classList.contains('active')?'hidden':'';
+}
+navToggle.addEventListener('click',toggleMenu);
+navOverlay.addEventListener('click',toggleMenu);
+// Tutup menu saat link diklik
+document.querySelectorAll('.nav-links a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    if(navLinks.classList.contains('active'))toggleMenu();
+  });
+});
+
 // Rooms data
 const rooms=[
   {name:'Podcast',desc:'Ruang rekaman podcast dengan akustik profesional',icon:'<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/>'},
@@ -1195,7 +1352,11 @@ roomCards.forEach(card=>{
 });
 
 function updateRoomTransform(){
-  room3d.style.transform=`rotateY(${rotation}deg) scale(${zoom})`;
+  // Di mobile, jangan pakai rotateY terlalu besar agar tidak overflow
+  const isMobile=window.innerWidth<=768;
+  const maxRotate=isMobile?20:360;
+  const safeRotation=((rotation%maxRotate)+maxRotate)%maxRotate;
+  room3d.style.transform=`rotateY(${safeRotation}deg) scale(${zoom})`;
 }
 
 document.getElementById('rotateLeft').addEventListener('click',()=>{
@@ -1231,6 +1392,14 @@ document.querySelectorAll('.vlog-card,.news-card,.room-card,.episode').forEach(e
   el.style.transform='translateY(30px)';
   el.style.transition='opacity .8s var(--ease),transform .8s var(--ease)';
   observer.observe(el);
+});
+
+// Reset rotation saat resize ke mobile
+window.addEventListener('resize',()=>{
+  if(window.innerWidth<=768){
+    rotation=0;
+    updateRoomTransform();
+  }
 });
 </script>
 </body>
