@@ -85,8 +85,9 @@ section{padding:96px 0 0}
 .pod .btn{background:var(--sun);color:var(--ink);border-color:var(--sun)}
 .pod .btn:hover{background:#fff;border-color:#fff;color:var(--ink)}
 .eps{list-style:none;display:flex;flex-direction:column}
+.eps a.ep{color:inherit}
 .ep{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:20px 0;border-top:1px solid rgba(255,255,255,.16)}
-.ep:last-child{border-bottom:1px solid rgba(255,255,255,.16)}
+li:last-child>.ep{border-bottom:1px solid rgba(255,255,255,.16)}
 .play{width:46px;height:46px;border-radius:50%;background:var(--violet);display:grid;place-items:center;transition:background .2s}
 .play::before{content:"";border-left:12px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
 .ep:hover .play{background:var(--coral)}
@@ -191,17 +192,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <a class="more" href="https://youtube.com/@paljie" target="_blank" rel="noopener">Semua video di YouTube</a>
     </div>
     <div class="grid3">
-      <a class="video" href="#" aria-label="Putar Vlog 1">
+      <a class="video" href="https://youtube.com/@paljie" target="_blank" rel="noopener" aria-label="Putar Vlog 1 di YouTube">
         <div class="thumb g1"></div>
         <h3>Judul vlog pertama kamu</h3>
         <p class="meta">12 menit • 2 hari lalu</p>
       </a>
-      <a class="video" href="#" aria-label="Putar Vlog 2">
+      <a class="video" href="https://youtube.com/@paljie" target="_blank" rel="noopener" aria-label="Putar Vlog 2 di YouTube">
         <div class="thumb g2"></div>
         <h3>Judul vlog kedua kamu</h3>
         <p class="meta">8 menit • 1 minggu lalu</p>
       </a>
-      <a class="video" href="#" aria-label="Putar Vlog 3">
+      <a class="video" href="https://youtube.com/@paljie" target="_blank" rel="noopener" aria-label="Putar Vlog 3 di YouTube">
         <div class="thumb g3"></div>
         <h3>Judul vlog ketiga kamu</h3>
         <p class="meta">15 menit • 2 minggu lalu</p>
@@ -214,12 +215,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div>
         <h2>Podcast Paljie</h2>
         <p class="lead">Obrolan santai tentang kreativitas, teknologi, dan cerita orang-orang di sekitar kita. Tayang setiap minggu.</p>
-        <a class="btn" href="https://open.spotify.com" target="_blank" rel="noopener">Dengarkan di Spotify</a>
+        <a class="btn" href="https://youtube.com/@paljie" target="_blank" rel="noopener">Tonton podcast di YouTube</a>
       </div>
       <ul class="eps">
-        <li class="ep"><span class="play"></span><div><h3>Episode 3: Judul episode terbaru</h3><small>Bersama tamu spesial</small></div><span class="dur">42 mnt</span></li>
-        <li class="ep"><span class="play"></span><div><h3>Episode 2: Judul episode kedua</h3><small>Obrolan santai</small></div><span class="dur">36 mnt</span></li>
-        <li class="ep"><span class="play"></span><div><h3>Episode 1: Perkenalan</h3><small>Mulai dari sini</small></div><span class="dur">28 mnt</span></li>
+        <li><a class="ep" href="https://youtube.com/@paljie" target="_blank" rel="noopener"><span class="play"></span><div><h3>Episode 3: Judul episode terbaru</h3><small>Bersama tamu spesial</small></div><span class="dur">42 mnt</span></a></li>
+        <li><a class="ep" href="https://youtube.com/@paljie" target="_blank" rel="noopener"><span class="play"></span><div><h3>Episode 2: Judul episode kedua</h3><small>Obrolan santai</small></div><span class="dur">36 mnt</span></a></li>
+        <li><a class="ep" href="https://youtube.com/@paljie" target="_blank" rel="noopener"><span class="play"></span><div><h3>Episode 1: Perkenalan</h3><small>Mulai dari sini</small></div><span class="dur">28 mnt</span></a></li>
       </ul>
     </div>
   </section>
@@ -236,12 +237,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           <h3>Judul berita utama ditulis di sini</h3>
           <p class="meta">Ringkasan dua kalimat tentang isi berita ini supaya pembaca langsung paham.</p>
         </div>
-        <a class="more" href="#" style="align-self:flex-start">Baca selengkapnya</a>
+        <a class="more" href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener" style="align-self:flex-start">Ikuti kabar di Instagram</a>
       </article>
       <div class="list">
-        <a class="item" href="#"><h3>Judul berita kedua</h3><p class="meta">Hari ini</p></a>
-        <a class="item" href="#"><h3>Judul berita ketiga</h3><p class="meta">Kemarin</p></a>
-        <a class="item" href="#"><h3>Judul berita keempat</h3><p class="meta">2 hari lalu</p></a>
+        <a class="item" href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener"><h3>Judul berita kedua</h3><p class="meta">Hari ini</p></a>
+        <a class="item" href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener"><h3>Judul berita ketiga</h3><p class="meta">Kemarin</p></a>
+        <a class="item" href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener"><h3>Judul berita keempat</h3><p class="meta">2 hari lalu</p></a>
       </div>
     </div>
   </section>
@@ -264,12 +265,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <section id="kontak" style="padding-top:0">
     <div class="contact">
       <h2>Ayo kolaborasi bareng.</h2>
-      <p>Punya ide, tawaran kerja sama, atau sekadar ingin menyapa? Hubungi kami.</p>
+      <p>Punya ide, tawaran kerja sama, atau sekadar ingin menyapa? Kirim pesan lewat Instagram atau TikTok kami.</p>
       <div class="socials">
         <a href="https://youtube.com/@paljie" target="_blank" rel="noopener">YouTube</a>
         <a href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.tiktok.com/@paljiecreative" target="_blank" rel="noopener">TikTok</a>
-        <a href="mailto:halo@email.com">Email</a>
       </div>
     </div>
   </section>
@@ -280,7 +280,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <footer>
   <div class="wrap">
     <span>© 2026 Paljie Media</span>
-    <span>Dibuat dengan GitHub Pages</span>
+    <span><a href="https://youtube.com/@paljie" target="_blank" rel="noopener">YouTube</a> • <a href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener">Instagram</a> • <a href="https://www.tiktok.com/@paljiecreative" target="_blank" rel="noopener">TikTok</a></span>
   </div>
 </footer>
 
