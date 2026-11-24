@@ -104,13 +104,28 @@ li:last-child>.ep{border-bottom:1px solid rgba(255,255,255,.16)}
 
 /* NEWS */
 .news{display:grid;grid-template-columns:1.2fr 1fr;gap:22px}
-.lead-news{background:var(--white);border-radius:var(--r);padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;border:1px solid var(--line)}
-.lead-news h3{font-size:2.2rem;margin:14px 0}
+.lead-news{background:var(--white);border-radius:var(--r);padding:34px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:320px;border:1px solid var(--line)}
+.lead-news h3{font-size:2rem;margin:14px 0}
 .chip{align-self:flex-start;background:var(--coral);color:#fff;padding:5px 14px;border-radius:99px;font-size:.82rem;font-weight:700}
 .list{display:flex;flex-direction:column;gap:14px}
 .item{background:var(--white);border-radius:22px;padding:22px 26px;border:1px solid var(--line);transition:border-color .2s,transform .2s}
 .item:hover{border-color:var(--violet);transform:translateX(4px)}
 .item h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
+
+.nstats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.nstat{background:var(--paper);border-radius:18px;padding:16px 18px}
+.nstat b{display:block;font-family:'Bricolage Grotesque';font-size:1.7rem;letter-spacing:-.04em;line-height:1;color:var(--coral)}
+.nstat span{font-size:.88rem;color:var(--muted);line-height:1.35;display:block;margin-top:6px}
+.src{font-size:.82rem;color:var(--muted);margin-top:10px}
+
+.news3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ncard{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;transition:transform .3s,border-color .2s}
+.ncard:hover{transform:translateY(-4px);border-color:var(--violet)}
+.ncard h3{font-size:1.65rem;margin:14px 0 12px}
+.ncard .meta{margin-top:0;font-size:.95rem;line-height:1.6}
+.chip.v{background:var(--violet)}
+.chip.s{background:var(--sun);color:var(--ink)}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px}
 
 /* ABOUT / CONTACT */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
@@ -136,7 +151,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 @media (max-width:900px){
-  .tiles,.grid3,.news,.about,.pod{grid-template-columns:1fr}
+  .tiles,.grid3,.news,.news3,.about,.pod{grid-template-columns:1fr}
   .tile{min-height:240px}
   .pod{padding:32px 24px;border-radius:30px}
   .nav ul{display:none}
@@ -240,20 +255,43 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <h2>Kabar terbaru</h2>
       <p>Ringkasan berita yang penting, tanpa bertele-tele.</p>
     </div>
-    <div class="news">
-      <article class="lead-news">
+    <div class="news3">
+      <article class="ncard">
         <div>
-          <span class="chip">Utama</span>
-          <h3>Judul berita utama ditulis di sini</h3>
-          <p class="meta">Ringkasan dua kalimat tentang isi berita ini supaya pembaca langsung paham.</p>
+          <span class="chip ">Keamanan Siber</span>
+          <h3>Bank-bank di Indonesia Siaga Hadapi Gelombang Serangan Siber</h3>
+          <p class="meta">Awal November 2026, OJK meminta perbankan meningkatkan kewaspadaan setelah dasbor FortiGuard Labs mencatat lonjakan aktivitas serangan siber ke Indonesia. Sektor perbankan, keuangan, dan asuransi menjadi sasaran terbesar. Nasabah diimbau tetap tenang dan menjaga keamanan rekening.</p>
+          <div class="nstats"><div class="nstat"><b>350.600</b><span>aktivitas serangan terdeteksi ke Indonesia dalam 24 jam (7 Nov)</span></div><div class="nstat"><b>214 ribu</b><span>menyasar perbankan, keuangan, dan asuransi</span></div></div>
         </div>
-        <a class="more" href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener" style="align-self:flex-start">Ikuti kabar di Instagram</a>
+        <div>
+          <div class="links"><a class="more" href="https://www.antaranews.com/berita/5841439/ojk-minta-bank-waspadai-serangan-siber-nasabah-diminta-tetap-tenang" target="_blank" rel="noopener">Baca di Antara</a><a class="more" href="https://www.fortuneidn.com/tech/tangkal-350-ribu-serangan-siber-perbankan-diminta-siaga-perkuat-koordinasi-keamanan-00-ccw2k-g1k100" target="_blank" rel="noopener">Fortune Indonesia</a></div>
+          <p class="src">Sumber: Antara, Fortune Indonesia • Data: FortiGuard Labs • 9 Nov 2026</p>
+        </div>
       </article>
-      <div class="list">
-        <a class="item" href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener"><h3>Judul berita kedua</h3><p class="meta">Hari ini</p></a>
-        <a class="item" href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener"><h3>Judul berita ketiga</h3><p class="meta">Kemarin</p></a>
-        <a class="item" href="https://www.instagram.com/paljiecreative" target="_blank" rel="noopener"><h3>Judul berita keempat</h3><p class="meta">2 hari lalu</p></a>
-      </div>
+      <article class="ncard">
+        <div>
+          <span class="chip v">Lingkungan</span>
+          <h3>Kebakaran Hutan Meluas di Kalimantan, Jutaan Warga Terdampak Asap</h3>
+          <p class="meta">Kebakaran hutan dan lahan (karhutla) sepanjang 2026 meluas di Kalimantan, Sumatera, dan Papua. Asap pekat mengganggu kesehatan, kegiatan sekolah, dan habitat satwa. Pemerintah mengerahkan helikopter dan modifikasi cuaca, tetapi per akhir Oktober lebih dari 3.000 hektare di Kalimantan masih terbakar.</p>
+          <div class="nstats"><div class="nstat"><b>41,1 juta</b><span>orang terdampak kabut asap, Agustus–awal Oktober (Greenpeace)</span></div><div class="nstat"><b>243 ribu ha</b><span>lahan gambut terbakar, Januari–Agustus (Pantau Gambut)</span></div></div>
+        </div>
+        <div>
+          <div class="links"><a class="more" href="https://mongabay.co.id/2026/11/09/kebakaran-hutan-masih-membara-ini-fakta-dan-dampaknya/amp/" target="_blank" rel="noopener">Baca di Mongabay</a><a class="more" href="https://www.cnnindonesia.com/nasional/20261026202035-20-1419893/lebih-dari-3000-hektare-lahan-dan-hutan-di-kalimantan-masih-terbakar" target="_blank" rel="noopener">CNN Indonesia</a></div>
+          <p class="src">Sumber: Mongabay Indonesia, CNN Indonesia • Nov 2026</p>
+        </div>
+      </article>
+      <article class="ncard">
+        <div>
+          <span class="chip s">Olahraga • Kaltara</span>
+          <h3>Tarakan Pertahankan Gelar Juara Umum Porprov II Kaltara 2026</h3>
+          <p class="meta">Porprov II Kaltara 2026 yang digelar di Malinau pada 10–22 November resmi ditutup Minggu malam, 22 November. Kontingen Tarakan dikukuhkan sebagai juara umum, sekaligus mempertahankan gelar yang diraih pada Porprov I tahun 2022. Sebanyak 3.955 atlet dari lima kabupaten/kota ikut bertanding.</p>
+          <div class="nstats"><div class="nstat"><b>146 emas</b><span>dari total 394 medali yang dikumpulkan Tarakan</span></div><div class="nstat"><b>121 • 127</b><span>medali perak dan perunggu Tarakan</span></div></div>
+        </div>
+        <div>
+          <div class="links"><a class="more" href="https://jendelakaltara.co/2026/11/tarakan-pertahankan-gelar-juara-umum-porprov-ii-kaltara-2026-ditutup-meriah-di-malinau/" target="_blank" rel="noopener">Baca di Jendela Kaltara</a><a class="more" href="https://www.antaranews.com/berita/5845431/hampir-empat-ribu-atlet-berlaga-pada-porprov-ii-kaltara-2026" target="_blank" rel="noopener">Antara</a></div>
+          <p class="src">Sumber: Jendela Kaltara, Antara • 22 Nov 2026</p>
+        </div>
+      </article>
     </div>
   </section>
 
